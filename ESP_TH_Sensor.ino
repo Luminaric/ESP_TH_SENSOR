@@ -58,7 +58,7 @@ Adafruit_IO_Feed temperature = aio.getFeed(AIO_FEED_T);
 void sendIOAdafruit() {
   char sH[7], sT[7];
   dtostrf(h,5,1,sH);
-  dtostrf(t,5,1,sT);
+  dtostrf(f,5,1,sT);
   //send Humidity
   if(humidity.send(sH)) {
     Serial.print(F("Wrote humidity to feed: ")); Serial.println(sH);
@@ -75,6 +75,7 @@ void sendIOAdafruit() {
   void getData(void) {
     float h = dht.readHumidity();
     float t = dht.readTemperature();
+    float f = dht.readTemperature(true);
     if (isnan(h) || isnan(t) ) {
       Serial.println("Failed to read from DHT sensor!");
       ESP.reset();
