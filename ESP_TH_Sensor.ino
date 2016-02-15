@@ -39,7 +39,7 @@ uint16 readvdd33(void);
 #define AIO_FEED_T            "downstairs-temp"
 
 uint16 x;
-float t, h;
+float t, h, f;
 float v = readvdd33() / 1000.0;
 //Depending on what is getting measured, change the line below to set sleep period
 const unsigned long sleepTimeS = 600;//in seconds
@@ -109,6 +109,8 @@ void setup() {
   //dhtTest();
   Serial.print("DHT using PIN: ");
   Serial.println(DHTPIN);
+  Serial.print("Using code for sensor ");
+  Serial.print(SENSORID);
   //Connect Wi-Fi
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
